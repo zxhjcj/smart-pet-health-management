@@ -1,0 +1,43 @@
+﻿<%@ Master Language="C#" %>
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head runat="server">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>智能宠物健康管理系统</title>
+    <link href="Content/site.css" rel="stylesheet" />
+    <asp:ContentPlaceHolder ID="HeadContent" runat="server" />
+</head>
+<body>
+    <form id="form1" runat="server">
+        <header class="topbar">
+            <a class="brand" href="Default.aspx">智能宠物健康管理系统</a>
+            <nav class="nav">
+                <a href="Default.aspx">首页</a>
+                <a href="Pets.aspx">宠物档案</a>
+                <a href="Health.aspx">健康记录</a>
+                <a href="Reminders.aspx">站内提醒</a>
+                <a href="AiConsult.aspx">AI 咨询</a>
+                <a href="Admin.aspx" id="adminLink" runat="server">后台管理</a>
+            </nav>
+            <div class="userbar">
+                <asp:Label ID="UserLabel" runat="server" />
+                <asp:HyperLink ID="LogoutLink" runat="server" NavigateUrl="Logout.aspx" Text="退出" />
+            </div>
+        </header>
+        <main class="page">
+            <asp:ContentPlaceHolder ID="MainContent" runat="server" />
+        </main>
+    </form>
+    <script runat="server">
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            adminLink.Visible = Auth.IsAdmin;
+            UserLabel.Text = Auth.IsLoggedIn ? "你好，" + Server.HtmlEncode(Auth.UserName) : "";
+            LogoutLink.Visible = Auth.IsLoggedIn;
+        }
+    </script>
+</body>
+</html>
+
+

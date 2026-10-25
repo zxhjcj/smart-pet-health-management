@@ -1,0 +1,30 @@
+# Local tools and IDE state
+.vs/
+.vscode/
+.idea/
+.agents/
+.codex/
+*.suo
+*.user
+
+# Dependencies and build output (restore from packages.config)
+packages/
+[Bb]in/
+[Oo]bj/
+PrecompiledWeb*/
+docx_render_check/
+
+# Course reports and generated documents
+*.docx
+*.pdf
+
+# Local data and secrets
+.env
+.env.*
+*.pfx
+*.pem
+*.mdf
+*.ldf
+*.bak
+*.log
+Web.*.local.config
